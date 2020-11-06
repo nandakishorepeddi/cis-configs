@@ -1,0 +1,23 @@
+apiVersion: cis.f5.com/v1
+kind: VirtualServer
+metadata:
+  labels:
+    f5cr: "true"
+  name: foo-com-vs-path-foo
+  namespace: default
+spec:
+  host: foo.com
+  httpTraffic: none
+  pools:
+  - monitor:
+      interval: 20
+      recv: ""
+      send: /
+      timeout: 10
+      type: http
+    path: /foo
+    service: svc-2
+    servicePort: 80
+  snat: auto
+  tlsProfileName: foo-com-tls-profile
+  virtualServerAddress: 172.16.3.15

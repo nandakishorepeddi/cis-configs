@@ -1,0 +1,3 @@
+curl -k --resolve bar.com:443:172.16.3.5 https://bar.com/
+curl -k --resolve bar.com:443:172.16.3.5 https://bar.com/abc |grep -i service_name
+curl -k --resolve bar.com:443:172.16.3.5 https://bar.com/bar |grep -i service_name

@@ -1,0 +1,21 @@
+apiVersion: "cis.f5.com/v1"
+kind: ExternalDNS
+metadata:
+  name: ocbc-foo
+  labels:
+    f5cr: "true"
+spec:
+  domainName: foo.com
+  dnsRecordType: A
+  loadBalanceMethod: round-robin
+  pools:
+  - name: h1.foo.com
+    dnsRecordType: A
+    loadBalanceMethod: round-robin
+    dataServerName: "/Common/H1-ServerL"
+    monitor:
+      type: https
+      send: "GET /health\r\n"
+      recv: ""
+      interval: 10
+      timeout: 10

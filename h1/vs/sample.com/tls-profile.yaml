@@ -1,0 +1,15 @@
+apiVersion: cis.f5.com/v1
+kind: TLSProfile
+metadata:
+  labels:
+    f5cr: "true"
+  name: sample-com-tls-profile
+  namespace: default
+spec:
+  hosts:
+  - sample.com
+  tls:
+    clientSSL: /Common/sample-clientssl
+    reference: bigip
+    serverSSL: ""
+    termination: edge
