@@ -1,0 +1,97 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    creationTimestamp: "2023-06-08T11:27:08Z"
+    labels:
+      endpointslice.kubernetes.io/skip-mirror: "true"
+    name: kubernetes
+    namespace: default
+    resourceVersion: "236"
+    uid: 213af262-81b5-48b4-856e-0ab6d59279bd
+  subsets:
+  - addresses:
+    - ip: 10.4.2.18
+    ports:
+    - name: https
+      port: 6443
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2023-11-22T15:53:13Z"
+    creationTimestamp: "2023-11-22T15:53:12Z"
+    labels:
+      app: svc-1
+    name: svc-1
+    namespace: default
+    resourceVersion: "22424231"
+    uid: cdc0b37e-7afd-45e2-a21a-9bf4043fbc54
+  subsets:
+  - addresses:
+    - ip: 10.244.2.41
+      nodeName: noted-blowfish-worker1
+      targetRef:
+        kind: Pod
+        name: svc-1-6b4ff4bf47-zkwd4
+        namespace: default
+        uid: 81176f16-0f47-4c75-9176-79bcd7048a6f
+    ports:
+    - name: svc-1-80
+      port: 80
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2023-11-22T16:09:58Z"
+    creationTimestamp: "2023-11-22T16:09:57Z"
+    labels:
+      app: svc-10
+    name: svc-10
+    namespace: default
+    resourceVersion: "22425924"
+    uid: b632b36e-aae7-47c9-81bd-92f561a33664
+  subsets:
+  - addresses:
+    - ip: 10.244.2.42
+      nodeName: noted-blowfish-worker1
+      targetRef:
+        kind: Pod
+        name: svc-10-759fd9cfc-5tqv8
+        namespace: default
+        uid: f317d76b-cb64-4e6c-8c87-4f34f7c74b3d
+    ports:
+    - name: svc-10-80
+      port: 80
+      protocol: TCP
+- apiVersion: v1
+  kind: Endpoints
+  metadata:
+    annotations:
+      endpoints.kubernetes.io/last-change-trigger-time: "2023-11-22T16:10:10Z"
+    creationTimestamp: "2023-11-22T16:10:09Z"
+    labels:
+      app: svc-11
+    name: svc-11
+    namespace: default
+    resourceVersion: "22425974"
+    uid: 203fd68d-09b1-4a7c-b729-33dac19ed6dc
+  subsets:
+  - addresses:
+    - ip: 10.244.2.43
+      nodeName: noted-blowfish-worker1
+      targetRef:
+        kind: Pod
+        name: svc-11-756756fc54-2dl27
+        namespace: default
+        uid: fee07b44-b2e9-4b30-a296-6f0c737bcd09
+    ports:
+    - name: svc-11-80
+      port: 80
+      protocol: TCP
+kind: List
+metadata:
+  resourceVersion: ""

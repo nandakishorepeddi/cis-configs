@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2023-11-22T15:53:12Z"
+  generation: 1
+  labels:
+    name: svc-1
+  name: svc-1
+  namespace: default
+  resourceVersion: "22424233"
+  uid: 85404688-39c4-4a17-ae40-eb1db0fe0cc9
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: svc-1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: svc-1
+    spec:
+      containers:
+      - env:
+        - name: service_name
+          value: svc-1
+        image: docker.io/f5networksdevel/test-nginx:latest
+        imagePullPolicy: IfNotPresent
+        name: svc-1
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-11-22T15:53:13Z"
+    lastUpdateTime: "2023-11-22T15:53:13Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-11-22T15:53:12Z"
+    lastUpdateTime: "2023-11-22T15:53:13Z"
+    message: ReplicaSet "svc-1-6b4ff4bf47" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

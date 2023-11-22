@@ -1,0 +1,4 @@
+NAME                  HOST         TLSPROFILENAME         HTTPTRAFFIC   IPADDRESS   IPAMLABEL   IPAMVSADDRESS   STATUS   AGE
+cr-vs-foo-svc-1       foo.com      cr-tls-foo-svc-1       redirect                  Test        10.9.0.1        Ok       58m
+cr-vs-foo123-svc-10   foo123.com   cr-tls-foo123-svc-10   redirect                  Test        10.9.0.1        Ok       41m
+cr-vs-foo456-svc-11   foo456.com   cr-tls-foo456-svc-11   redirect                  Test        10.9.0.1        Ok       41m

@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2023-11-22T15:52:35Z"
+  generation: 1
+  labels:
+    name: test-ipam-controller-2
+  name: test-ipam-controller-2
+  namespace: kube-system
+  resourceVersion: "22425307"
+  uid: e994cfe4-274e-4fba-9b35-477f282a0912
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: test-ipam-controller-2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test-ipam-controller-2
+    spec:
+      containers:
+      - args:
+        - --orchestration
+        - kubernetes
+        - --ipam-provider
+        - infoblox
+        - --infoblox-grid-host
+        - 10.145.71.73
+        - --infoblox-wapi-port
+        - "443"
+        - --infoblox-wapi-version
+        - 2.11.2
+        - --infoblox-username
+        - admin
+        - --infoblox-password
+        - infoblox
+        - --infoblox-labels
+        - '{"Dev":{"cidr": "10.8.128.0/17"},"Test":{"cidr": "10.9.0.0/16"},"Production":{"cidr":
+          "10.10.0.0/16"}, "Default":{"cidr": "10.11.0.0/16"}}'
+        - --infoblox-netview
+        - netview_10_145_67_71
+        - --log-level
+        - DEBUG
+        command:
+        - /app/bin/f5-ipam-controller
+        image: docker.io/f5networks/f5-ipam-controller:latest
+        imagePullPolicy: IfNotPresent
+        name: test-ipam-controller-2
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: bigip-controller
+      serviceAccountName: bigip-controller
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-11-22T15:52:35Z"
+    lastUpdateTime: "2023-11-22T15:52:36Z"
+    message: ReplicaSet "test-ipam-controller-2-7f5588859f" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2023-11-22T16:03:49Z"
+    lastUpdateTime: "2023-11-22T16:03:49Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

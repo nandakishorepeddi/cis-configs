@@ -1,0 +1,59 @@
+apiVersion: v1
+items:
+- apiVersion: cis.f5.com/v1
+  kind: TLSProfile
+  metadata:
+    creationTimestamp: "2023-11-22T15:53:14Z"
+    generation: 1
+    labels:
+      f5cr: "true"
+    name: cr-tls-foo-svc-1
+    namespace: default
+    resourceVersion: "22424236"
+    uid: 742ce6bf-a720-4f2e-aaed-0683558e5dbb
+  spec:
+    hosts:
+    - foo.com
+    tls:
+      clientSSL: foo-secret
+      reference: secret
+      termination: edge
+- apiVersion: cis.f5.com/v1
+  kind: TLSProfile
+  metadata:
+    creationTimestamp: "2023-11-22T16:10:00Z"
+    generation: 1
+    labels:
+      f5cr: "true"
+    name: cr-tls-foo123-svc-10
+    namespace: default
+    resourceVersion: "22425931"
+    uid: 452d72ed-f194-4647-9fa6-0211e97bf4d5
+  spec:
+    hosts:
+    - foo123.com
+    tls:
+      clientSSL: foo123-secret
+      reference: secret
+      termination: edge
+- apiVersion: cis.f5.com/v1
+  kind: TLSProfile
+  metadata:
+    creationTimestamp: "2023-11-22T16:10:12Z"
+    generation: 1
+    labels:
+      f5cr: "true"
+    name: cr-tls-foo456-svc-11
+    namespace: default
+    resourceVersion: "22425980"
+    uid: 24861e2c-c985-41aa-b0f7-cd458af80824
+  spec:
+    hosts:
+    - foo456.com
+    tls:
+      clientSSL: foo456-secret
+      reference: secret
+      termination: edge
+kind: List
+metadata:
+  resourceVersion: ""

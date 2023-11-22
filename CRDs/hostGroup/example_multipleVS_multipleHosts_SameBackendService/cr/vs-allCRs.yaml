@@ -1,0 +1,110 @@
+apiVersion: v1
+items:
+- apiVersion: cis.f5.com/v1
+  kind: VirtualServer
+  metadata:
+    creationTimestamp: "2023-11-22T15:53:14Z"
+    generation: 2
+    labels:
+      f5cr: "true"
+    name: cr-vs-foo-svc-1
+    namespace: default
+    resourceVersion: "22426477"
+    uid: 7cf26704-5eba-4499-8092-7074bd06bdae
+  spec:
+    additionalVirtualServerAddresses: []
+    allowVlans: []
+    host: foo.com
+    hostGroup: cafe
+    httpTraffic: redirect
+    iRules: []
+    ipamLabel: Test
+    partition: test
+    pools:
+    - monitor:
+        interval: 20
+        recv: ""
+        send: /
+        timeout: 10
+        type: http
+      path: /
+      service: svc-1
+      servicePort: 80
+    snat: auto
+    tlsProfileName: cr-tls-foo-svc-1
+  status:
+    status: Ok
+    vsAddress: 10.9.0.1
+- apiVersion: cis.f5.com/v1
+  kind: VirtualServer
+  metadata:
+    creationTimestamp: "2023-11-22T16:10:00Z"
+    generation: 3
+    labels:
+      f5cr: "true"
+    name: cr-vs-foo123-svc-10
+    namespace: default
+    resourceVersion: "22426733"
+    uid: 70dc5d2e-8853-46bc-a3d8-569ceb9b7e0d
+  spec:
+    additionalVirtualServerAddresses: []
+    allowVlans: []
+    host: foo123.com
+    hostGroup: cafe
+    httpTraffic: redirect
+    iRules: []
+    ipamLabel: Test
+    partition: test
+    pools:
+    - monitor:
+        interval: 20
+        recv: ""
+        send: /
+        timeout: 10
+        type: http
+      path: /foo123
+      service: svc-1
+      servicePort: 80
+    snat: auto
+    tlsProfileName: cr-tls-foo123-svc-10
+  status:
+    status: Ok
+    vsAddress: 10.9.0.1
+- apiVersion: cis.f5.com/v1
+  kind: VirtualServer
+  metadata:
+    creationTimestamp: "2023-11-22T16:10:12Z"
+    generation: 3
+    labels:
+      f5cr: "true"
+    name: cr-vs-foo456-svc-11
+    namespace: default
+    resourceVersion: "22426734"
+    uid: 261e5264-0a16-4139-b805-b5b804bd42f5
+  spec:
+    additionalVirtualServerAddresses: []
+    allowVlans: []
+    host: foo456.com
+    hostGroup: cafe
+    httpTraffic: redirect
+    iRules: []
+    ipamLabel: Test
+    partition: test
+    pools:
+    - monitor:
+        interval: 20
+        recv: ""
+        send: /
+        timeout: 10
+        type: http
+      path: /
+      service: svc-1
+      servicePort: 80
+    snat: auto
+    tlsProfileName: cr-tls-foo456-svc-11
+  status:
+    status: Ok
+    vsAddress: 10.9.0.1
+kind: List
+metadata:
+  resourceVersion: ""

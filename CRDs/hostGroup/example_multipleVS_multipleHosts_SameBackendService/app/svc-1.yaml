@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2023-11-22T15:53:12Z"
+  labels:
+    app: svc-1
+  name: svc-1
+  namespace: default
+  resourceVersion: "22424208"
+  uid: a9fdc00d-dfc9-4f8f-9baf-8d0dd55f16e8
+spec:
+  clusterIP: 10.108.104.95
+  clusterIPs:
+  - 10.108.104.95
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: svc-1-80
+    nodePort: 31509
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: svc-1
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}

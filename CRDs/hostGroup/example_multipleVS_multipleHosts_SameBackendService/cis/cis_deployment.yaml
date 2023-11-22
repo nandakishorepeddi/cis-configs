@@ -1,0 +1,84 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+  creationTimestamp: "2023-11-22T15:52:33Z"
+  generation: 5
+  labels:
+    name: test-bigip-controller-1
+  name: test-bigip-controller-1
+  namespace: kube-system
+  resourceVersion: "22428522"
+  uid: 099a336f-a2ab-418b-abe7-38bffe831629
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 0
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: test-bigip-controller-1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test-bigip-controller-1
+    spec:
+      containers:
+      - args:
+        - --bigip-partition
+        - test
+        - --bigip-url
+        - 10.145.72.4
+        - --bigip-username
+        - admin
+        - --bigip-password
+        - admin
+        - --log-level
+        - DEBUG
+        - --as3-validation=true
+        - --disable-teems=true
+        - --insecure
+        - --log-as3-response=true
+        - --custom-resource-mode=true
+        - --ipam=true
+        - --cccl-gtm-agent=false
+        - --flannel-name
+        - /test/vxlan-tunnel-mp
+        - --pool-member-type
+        - cluster
+        command:
+        - /app/bin/k8s-bigip-ctlr
+        image: f5networks/k8s-bigip-ctlr:2.15.0
+        imagePullPolicy: IfNotPresent
+        name: test-bigip-controller-1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: bigip-controller
+      serviceAccountName: bigip-controller
+      terminationGracePeriodSeconds: 30
+status:
+  conditions:
+  - lastTransitionTime: "2023-11-22T15:52:33Z"
+    lastUpdateTime: "2023-11-22T16:02:07Z"
+    message: ReplicaSet "test-bigip-controller-1-5f7b8856df" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2023-11-22T16:08:56Z"
+    lastUpdateTime: "2023-11-22T16:08:56Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 5

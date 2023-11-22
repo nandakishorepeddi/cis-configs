@@ -1,0 +1,23 @@
+apiVersion: v1
+items:
+- apiVersion: fic.f5.com/v1
+  kind: IPAM
+  metadata:
+    creationTimestamp: "2023-11-22T15:52:39Z"
+    generation: 8
+    name: test-bigip-controller-1.test.ipam
+    namespace: kube-system
+    resourceVersion: "22426538"
+    uid: 57126ae4-5dc0-420c-877d-2142901921df
+  spec:
+    hostSpecs:
+    - ipamLabel: Test
+      key: cafe_hg
+  status:
+    IPStatus:
+    - ip: 10.9.0.1
+      ipamLabel: Test
+      key: cafe_hg
+kind: List
+metadata:
+  resourceVersion: ""
